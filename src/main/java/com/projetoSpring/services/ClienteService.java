@@ -24,7 +24,7 @@ import com.projetoSpring.repositories.ClienteRepository;
 import com.projetoSpring.repositories.EnderecoRepository;
 import com.projetoSpring.security.UserSS;
 import com.projetoSpring.services.exepitions.AuthorizationException;
-import com.projetoSpring.services.exepitions.ConstraintExeption;
+import com.projetoSpring.services.exepitions.DataIntegrityException;
 import com.projetoSpring.services.exepitions.ObjectNotFounExepition;
 
 @Service
@@ -88,7 +88,7 @@ public class ClienteService {
 
 		} catch (Exception e) {
 
-			throw new ConstraintExeption("Não e possivael excluir cliente com pedidos associados");
+			throw new DataIntegrityException("Não e possivael excluir cliente com pedidos associados");
 
 		}
 

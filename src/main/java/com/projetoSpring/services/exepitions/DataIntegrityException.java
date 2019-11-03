@@ -1,14 +1,14 @@
 package com.projetoSpring.services.exepitions;
 
-public class ConstraintExeption  extends RuntimeException{
+public class DataIntegrityException  extends RuntimeException{
 
 	
 	private static final long serialVersionUID = 1L;
 
-	public ConstraintExeption(String msg) {
+	public DataIntegrityException(String msg) {
 		super(msg);
 	}
-	public ConstraintExeption (String msg,Throwable cause) {
+	public DataIntegrityException (String msg,Throwable cause) {
 		
 		super(msg,cause);
 	}
