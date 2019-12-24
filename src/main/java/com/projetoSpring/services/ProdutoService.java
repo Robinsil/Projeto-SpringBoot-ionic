@@ -13,7 +13,7 @@ import com.projetoSpring.domain.Categoria;
 import com.projetoSpring.domain.Produto;
 import com.projetoSpring.repositories.CategoriaRepository;
 import com.projetoSpring.repositories.ProdutoRepository;
-import com.projetoSpring.services.exepitions.ObjectNotFounExepition;
+import com.projetoSpring.services.exepitions.ObjectNotFoundException;
 
 @Service
 public class ProdutoService {
@@ -28,7 +28,7 @@ public class ProdutoService {
 	public Produto find(Integer id) {
 		Optional<Produto> obj = produtoRepository.findById(id);
 		
-		return obj.orElseThrow(() -> new ObjectNotFounExepition(
+		return obj.orElseThrow(() -> new ObjectNotFoundException(
 				"Objeto não encontrado com id = "+ id + " Tipo " + Produto.class.getName()));
 	}
 	

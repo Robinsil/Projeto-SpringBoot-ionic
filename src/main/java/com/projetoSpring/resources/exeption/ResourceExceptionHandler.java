@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.amazonaws.AmazonClientException;
 import com.amazonaws.AmazonServiceException;
-import com.amazonaws.services.applicationautoscaling.model.ObjectNotFoundException;
 import com.amazonaws.services.s3.model.AmazonS3Exception;
 import com.projetoSpring.services.exepitions.AuthorizationException;
 import com.projetoSpring.services.exepitions.DataIntegrityException;
 import com.projetoSpring.services.exepitions.FileException;
+import com.projetoSpring.services.exepitions.ObjectNotFoundException;
 
 
 @ControllerAdvice

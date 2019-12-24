@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.projetoSpring.domain.Cliente;
 import com.projetoSpring.repositories.ClienteRepository;
-import com.projetoSpring.services.exepitions.ObjectNotFounExepition;
+import com.projetoSpring.services.exepitions.ObjectNotFoundException;
 
 @Service
 public class AuthService {
@@ -28,7 +28,7 @@ public class AuthService {
 		
 		Cliente cliente = clienteRepository.findByEmail(email);
 		if (cliente == null) {
-			throw new ObjectNotFounExepition("Email não encontrado");
+			throw new ObjectNotFoundException("Email não encontrado !!!!");
 		}
 		
 		

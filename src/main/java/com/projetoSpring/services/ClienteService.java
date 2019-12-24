@@ -27,7 +27,7 @@ import com.projetoSpring.repositories.EnderecoRepository;
 import com.projetoSpring.security.UserSS;
 import com.projetoSpring.services.exepitions.AuthorizationException;
 import com.projetoSpring.services.exepitions.DataIntegrityException;
-import com.projetoSpring.services.exepitions.ObjectNotFounExepition;
+import com.projetoSpring.services.exepitions.ObjectNotFoundException;
 
 @Service
 public class ClienteService {
@@ -70,8 +70,8 @@ public class ClienteService {
 		}
 
 		Optional<Cliente> obj = clienteRepository.findById(id);
-		return obj.orElseThrow(() -> new ObjectNotFounExepition(
-				"Objeto não encontrado com id = " + id + " Tipo " + Cliente.class.getName()));
+		return obj.orElseThrow(() -> new ObjectNotFoundException(
+				"Objeto não encontrado! Id: " + id + ", Tipo: " + Cliente.class.getName()));
 	}
 
 	public Cliente update(Cliente obj) {
@@ -171,7 +171,7 @@ public class ClienteService {
 
 		Cliente obj = clienteRepository.findByEmail(email);
 		if (obj == null) {
-			throw new ObjectNotFounExepition(
+			throw new ObjectNotFoundException(
 					"Objeto não encontrado! Id: " + user.getId() + ", Tipo: " + Cliente.class.getName());
 		}
 		return obj;

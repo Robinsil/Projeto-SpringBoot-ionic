@@ -22,7 +22,7 @@ import com.projetoSpring.repositories.PedidoRepository;
 import com.projetoSpring.security.UserSS;
 import com.projetoSpring.services.exepitions.AuthorizationException;
 import com.projetoSpring.services.exepitions.DataIntegrityException;
-import com.projetoSpring.services.exepitions.ObjectNotFounExepition;
+import com.projetoSpring.services.exepitions.ObjectNotFoundException;
 
 @Service
 public class PedidoService {
@@ -50,7 +50,7 @@ public class PedidoService {
 
 	public Pedido find(Integer id) {
 		Optional<Pedido> obj = pedidoRepository.findById(id);
-		return obj.orElseThrow(() -> new ObjectNotFounExepition(
+		return obj.orElseThrow(() -> new ObjectNotFoundException(
 				"Objeto não encontrado com id = " + id + " Tipo " + Pedido.class.getName()));
 
 	}

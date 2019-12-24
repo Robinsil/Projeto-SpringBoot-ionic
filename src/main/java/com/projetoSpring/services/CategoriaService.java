@@ -13,7 +13,7 @@ import com.projetoSpring.domain.Categoria;
 import com.projetoSpring.dto.CategoriaDTO;
 import com.projetoSpring.repositories.CategoriaRepository;
 import com.projetoSpring.services.exepitions.DataIntegrityException;
-import com.projetoSpring.services.exepitions.ObjectNotFounExepition;
+import com.projetoSpring.services.exepitions.ObjectNotFoundException;
 
 @Service
 public class CategoriaService {
@@ -23,8 +23,9 @@ public class CategoriaService {
 
 	public Categoria find(Integer id) {
 		Optional<Categoria> obj = categoriaRepository.findById(id);
-		return obj.orElseThrow(() -> new ObjectNotFounExepition(
-				"Objeto não encontrado com id = " + id + " Tipo " + Categoria.class.getName()));
+		return obj.orElseThrow(() -> new ObjectNotFoundException(
+				"Objeto não encontrado! Id: " + id + ", Tipo: " + Categoria.class.getName()));
+		
 	}
 
 	public Categoria insert(Categoria obj) {
