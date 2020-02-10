@@ -11,8 +11,6 @@ public class CredenciasDTO implements Serializable{
 	public CredenciasDTO() {
 	}
 	
-	
-
 	public String getSenha() {
 		return senha;
 	}
