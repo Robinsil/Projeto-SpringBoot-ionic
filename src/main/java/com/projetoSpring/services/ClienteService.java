@@ -32,14 +32,7 @@ import com.projetoSpring.services.exepitions.ObjectNotFoundException;
 @Service
 public class ClienteService {
 
-	@Transactional
-	public Cliente insert(Cliente obj) {
 
-		obj.setId(null);
-		obj = clienteRepository.save(obj);
-		enderecoRepository.saveAll(obj.getEnderecos());
-		return obj;
-	}
 
 	@Autowired
 	private ClienteRepository clienteRepository;
@@ -69,10 +62,21 @@ public class ClienteService {
 			throw new AuthorizationException("Acesso negado");
 		}
 
+		
 		Optional<Cliente> obj = clienteRepository.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 				"Objeto não encontrado! Id: " + id + ", Tipo: " + Cliente.class.getName()));
 	}
+	
+	@Transactional
+	public Cliente insert(Cliente obj) {
+
+		obj.setId(null);
+		obj = clienteRepository.save(obj);
+		enderecoRepository.saveAll(obj.getEnderecos());
+		return obj;
+	}
+	
 
 	public Cliente update(Cliente obj) {
 
@@ -113,7 +117,7 @@ public class ClienteService {
 
 	public Cliente fromDTO(ClienteNewDTO objDTO) {
 
-		Cliente cli = new Cliente(null, objDTO.getNome(), objDTO.getEmail(), objDTO.getCPFouCNPJ(),
+		Cliente cli = new Cliente(null, objDTO.getNome(), objDTO.getEmail(), objDTO.getCpfOUcnpj(),
 				TipoCliente.toEnum(objDTO.getTipo()), pe.encode(objDTO.getSenha()));
 		Cidade cid = new Cidade(objDTO.getCidadeId(), null, null);
 		Endereco end = new Endereco(null, objDTO.getLogradouro(), objDTO.getNumero(), objDTO.getComplemento(),

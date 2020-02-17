@@ -43,7 +43,7 @@ public class Cliente implements Serializable{
 	@Email(message ="email invalido")
 	@Column(unique = true)
 	private String email;
-	private String CPFouCNPJ;
+	private String cpfOUcnpj;
 	private Integer tipo;
 	
 	@JsonIgnore
@@ -71,12 +71,12 @@ public class Cliente implements Serializable{
 		addPerfil(Perfil.CLIENTE);
 	}
 
-	public Cliente(Integer id, String nome, String email, String CPFouCNPJ, TipoCliente tipo,String senha) {
+	public Cliente(Integer id, String nome, String email, String cpfOUcnpj, TipoCliente tipo,String senha) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
-		this.CPFouCNPJ = CPFouCNPJ;
+		this.cpfOUcnpj = cpfOUcnpj;
 		this.tipo = (tipo == null )?null :tipo.getCod();
 		this.senha = senha;
 		addPerfil(Perfil.CLIENTE);
@@ -122,13 +122,14 @@ public class Cliente implements Serializable{
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
 
-	public String getCPFouCNPJ() {
-		return CPFouCNPJ;
+	public String getCpfOUcnpj() {
+		return cpfOUcnpj;
 	}
 
-	public void setCPFouCNPJ(String CPFouCNPJ) {
-		this.CPFouCNPJ = CPFouCNPJ;
+	public void setCpfOUcnpj(String cpfOUcnpj) {
+		this.cpfOUcnpj = cpfOUcnpj;
 	}
 
 	public TipoCliente getTipo() {
